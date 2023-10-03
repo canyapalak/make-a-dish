@@ -1,36 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "tailwindcss/tailwind.css";
 import "../app/globals.css";
 import Image from "next/image";
-import logo01 from "@/public/assets/images/logo-nobg01.png";
-import logo02 from "@/public/assets/images/logo-nobg02.png";
-import logo03 from "@/public/assets/images/logo-nobg03.png";
-import logo04 from "@/public/assets/images/logo-nobg04.png";
-
-const logos = [logo01, logo02, logo03, logo04];
+import button01 from "/public/assets/images/button01.png";
+import button02 from "/public/assets/images/button02.png";
 
 export default function Home() {
-  const [currentLogo, setCurrentLogo] = useState(0);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentLogo((prevIndex) => (prevIndex + 1) % logos.length);
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const [buttonState, setButtonState] = useState(button01);
 
   return (
     <div>
-      <Image
-        src={logos[currentLogo]}
-        alt="Logo"
-        width="400"
-        height="100"
-        className="mx-auto"
-      />
-      <p className="text-3xl">Make a Dish</p>
-      <p className="text-lg">fdsfdsfsdf fsfsf s fsfs..</p>
+      <div className="flex flex-col justify-center items-center mt-20 text-xl text-justify mx-10 gap-16">
+        <p>
+          You got a fridge with edible enigmas but no clue what to cook? Then
+          this is your lucky day!
+        </p>
+        <div
+          onMouseEnter={() => setButtonState(button02)}
+          onMouseLeave={() => setButtonState(button01)}
+          className="relative flex items-center"
+        >
+          <Image src={buttonState} alt="Logo" width="200" height="100" />
+          <span className="absolute inset-0 flex items-center justify-center text-3xl font-semibold cursor-pointer hover:text-stone-600">
+            START
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
