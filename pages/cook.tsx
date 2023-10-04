@@ -13,7 +13,7 @@ function shuffleArray(array: Ingredient[]) {
   return shuffledArray;
 }
 
-export default function CookPage() {
+export default function Cook() {
   const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
     []
   );

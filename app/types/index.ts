@@ -3,3 +3,7 @@ export interface Ingredient {
   name: string;
   src: string;
 }
+
+export type WelcomeComponentProps = {
+  onStartClick: () => void;
+};
