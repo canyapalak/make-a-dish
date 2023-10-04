@@ -1,7 +1,87 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ingredients } from "@/public/assets/data/Ingredients";
 import Image from "next/image";
 import { Ingredient } from "@/app/types";
+import button01 from "/public/assets/images/button01.png";
+import button02 from "/public/assets/images/button02.png";
+import tick from "/public/assets/images/tick-icon.png";
+import { PotContext } from "@/app/contexts/PotContext";
+
+export default function CookComponent() {
+  const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
+    []
+  );
+  const [buttonState, setButtonState] = useState(button01);
+
+  const potContext = useContext(PotContext);
+  const { pot, addToPot } = potContext || { pot: [], addToPot: () => {} };
+
+  const handleIngredientClick = (ingredient: Ingredient) => {
+    addToPot(ingredient);
+  };
+
+  console.log("pot", pot);
+
+  useEffect(() => {
+    setShuffledIngredients(shuffleArray(ingredients));
+  }, []);
+
+  return (
+    <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
+      <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 text-xl rounded-md">
+        <p>Pick the ingredients in your fridge and let the magic happen!</p>
+      </div>
+      <div className="flex flex-row flex-wrap gap-4 md:gap-6 mx-4 lg:mx-8 justify-center ">
+        {shuffledIngredients.map((ingre) => (
+          <div
+            key={ingre.name}
+            className="flex flex-col justify-center p-2 border-4 border-slate-700 shadow-md
+    shadow-zinc-500 bg-white items-center cursor-pointer rounded-md relative overflow-hidden"
+            onClick={() => handleIngredientClick(ingre)}
+          >
+            <div className="group">
+              <Image
+                src={ingre.src}
+                alt={ingre.name}
+                width={70}
+                height={70}
+                title={ingre.name}
+                className={`${
+                  pot.includes(ingre) ? "opacity-25" : ""
+                } group-hover:opacity-25`}
+              />
+              {pot.includes(ingre) && (
+                <div className="absolute inset-4 flex justify-center opacity-100">
+                  <Image src={tick} alt="Tick" width={60} height={60} />
+                </div>
+              )}
+              <div
+                className={`absolute inset-0 flex justify-center opacity-0 group-hover:opacity-100 ${
+                  pot.includes(ingre) ? "group-hover:opacity-0" : ""
+                }`}
+              >
+                <p className="text-center my-auto">{ingre.name}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div
+        onMouseEnter={() => setButtonState(button02)}
+        onMouseLeave={() => setButtonState(button01)}
+        className="relative flex items-center"
+      >
+        <Image src={buttonState} alt="Logo" width="200" height="100" />
+        <span
+          className="absolute inset-0 flex items-center justify-center text-3xl 
+        font-semibold cursor-pointer hover:text-stone-600"
+        >
+          LET'S GO!
+        </span>
+      </div>
+    </div>
+  );
+}
 
 // SHUFFLE INGREDIENTS ARRAY
 function shuffleArray(array: Ingredient[]) {
@@ -11,56 +91,4 @@ function shuffleArray(array: Ingredient[]) {
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
   return shuffledArray;
-}
-
-export default function CookComponent() {
-  const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
-    []
-  );
-
-  useEffect(() => {
-    setShuffledIngredients(shuffleArray(ingredients));
-  }, []);
-
-  return (
-    <div className="flex flex-col justify-center items-center mt-14 text-justify mx-10 gap-10">
-      <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 text-xl ">
-        <p>Drag the ingredients in your fridge and drop them into the pot!</p>
-      </div>
-      <div className="flex flex-row flex-wrap gap-6 mx-8 justify-center ">
-        {shuffledIngredients.map((ingre) => (
-          <div
-            key={ingre.name}
-            className="flex flex-col justify-center p-2 border-4 border-slate-700 shadow-md
-             shadow-zinc-500 bg-white items-center cursor-pointer rounded-md relative overflow-hidden"
-          >
-            <div className="group">
-              <Image
-                src={ingre.src}
-                alt={ingre.name}
-                width={70}
-                height={70}
-                title={ingre.name}
-                className="group-hover:opacity-25"
-              />
-              <div className="absolute inset-0 flex justify-center opacity-0 group-hover:opacity-100">
-                <p className="text-center my-auto">{ingre.name}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div
-        className="p-2 border-4 border-slate-700 shadow-md
-             shadow-zinc-500 bg-white rounded-md"
-      >
-        <Image
-          src="/assets/images/cooking-pot.png"
-          alt="Pot"
-          width={200}
-          height={200}
-        />
-      </div>
-    </div>
-  );
 }

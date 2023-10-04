@@ -13,8 +13,8 @@ export default function WelcomeComponent({
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center mt-14 text-xl text-justify mx-10 gap-16">
-        <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600">
+      <div className="flex flex-col justify-center items-center mt-14 text-xl text-justify mx-2 md:mx-10 gap-16">
+        <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 rounded-md">
           <p>
             You got a fridge with edible enigmas but no clue what to cook? Then
             this is your lucky day!
@@ -27,7 +27,10 @@ export default function WelcomeComponent({
           className="relative flex items-center"
         >
           <Image src={buttonState} alt="Logo" width="200" height="100" />
-          <span className="absolute inset-0 flex items-center justify-center text-3xl font-semibold cursor-pointer hover:text-stone-600">
+          <span
+            className="absolute inset-0 flex items-center justify-center text-3xl 
+          font-semibold cursor-pointer hover:text-stone-600"
+          >
             START
           </span>
         </div>
