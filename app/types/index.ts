@@ -17,4 +17,5 @@ export interface PotProviderProps {
 export interface PotContextType {
   pot: Ingredient[];
   addToPot: (ingredient: Ingredient) => void;
+  removeFromPot: (ingredient: Ingredient) => void;
 }

@@ -17,14 +17,28 @@ export default function CookComponent() {
   }>({});
 
   const potContext = useContext(PotContext);
-  const { pot, addToPot } = potContext || { pot: [], addToPot: () => {} };
+  const { pot, addToPot, removeFromPot } = potContext || {
+    pot: [],
+    addToPot: () => {},
+    removeFromPot: () => {},
+  };
 
   const handleIngredientClick = (ingredient: Ingredient) => {
-    addToPot(ingredient);
+    const isAlreadyInPot = pot.includes(ingredient);
+    if (isAlreadyInPot) {
+      handleRemoveFromPot(ingredient);
+    } else {
+      addToPot(ingredient);
+    }
+
     setIngredientRemoveName((prevState) => ({
       ...prevState,
       [ingredient.name]: !prevState[ingredient.name],
     }));
+  };
+
+  const handleRemoveFromPot = (ingredient: Ingredient) => {
+    removeFromPot(ingredient);
   };
 
   console.log("pot", pot);
