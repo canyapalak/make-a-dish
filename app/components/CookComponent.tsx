@@ -12,12 +12,19 @@ export default function CookComponent() {
     []
   );
   const [buttonState, setButtonState] = useState(button01);
+  const [ingredientRemoveName, setIngredientRemoveName] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const potContext = useContext(PotContext);
   const { pot, addToPot } = potContext || { pot: [], addToPot: () => {} };
 
   const handleIngredientClick = (ingredient: Ingredient) => {
     addToPot(ingredient);
+    setIngredientRemoveName((prevState) => ({
+      ...prevState,
+      [ingredient.name]: !prevState[ingredient.name],
+    }));
   };
 
   console.log("pot", pot);
@@ -60,7 +67,13 @@ export default function CookComponent() {
                   pot.includes(ingre) ? "group-hover:opacity-0" : ""
                 }`}
               >
-                <p className="text-center my-auto">{ingre.name}</p>
+                <p
+                  className={`${
+                    ingredientRemoveName[ingre.name] ? "opacity-0" : ""
+                  } text-center my-auto`}
+                >
+                  {ingre.name}
+                </p>
               </div>
             </div>
           </div>
