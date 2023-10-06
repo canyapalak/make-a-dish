@@ -158,8 +158,8 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 32,
-    name: "rice",
-    src: "/assets/images/rice.png",
+    name: "pork",
+    src: "/assets/images/pork.png",
   },
   {
     id: 33,
@@ -200,5 +200,55 @@ export const ingredients: Ingredient[] = [
     id: 40,
     name: "yogurt",
     src: "/assets/images/yogurt.png",
+  },
+  {
+    id: 41,
+    name: "pea",
+    src: "/assets/images/pea.png",
+  },
+  {
+    id: 42,
+    name: "coconut",
+    src: "/assets/images/coconut.png",
+  },
+  {
+    id: 43,
+    name: "rice",
+    src: "/assets/images/rice.png",
+  },
+  {
+    id: 44,
+    name: "pome-granate",
+    src: "/assets/images/pomegranate.png",
+  },
+  {
+    id: 45,
+    name: "pineapple",
+    src: "/assets/images/pineapple.png",
+  },
+  {
+    id: 46,
+    name: "banana",
+    src: "/assets/images/banana.png",
+  },
+  {
+    id: 47,
+    name: "kohlrabi",
+    src: "/assets/images/kohlrabi.png",
+  },
+  {
+    id: 48,
+    name: "straw-berry",
+    src: "/assets/images/strawberry.png",
+  },
+  {
+    id: 49,
+    name: "water-melon",
+    src: "/assets/images/watermelon.png",
+  },
+  {
+    id: 50,
+    name: "plum",
+    src: "/assets/images/plum.png",
   },
 ];
