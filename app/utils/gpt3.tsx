@@ -1,7 +1,10 @@
 // utils/gpt3.js
 const API_KEY = process.env.OPENAI_API_KEY;
 
-async function generateRecipe(prompt: string) {
+const promptText: string =
+  "Create a recipe with these ingredients: potato, paprika, yogurt, salmon.";
+
+async function generateRecipe() {
   const apiUrl = "https://api.openai.com/v1/engines/davinci/completions";
 
   const requestOptions = {
@@ -11,7 +14,7 @@ async function generateRecipe(prompt: string) {
       Authorization: `Bearer ${API_KEY}`,
     },
     body: JSON.stringify({
-      prompt: prompt,
+      prompt: promptText,
       max_tokens: 100,
     }),
   };
