@@ -183,8 +183,8 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 37,
-    name: "tomato paste",
-    src: "/assets/images/tomato-paste.png",
+    name: "avocado",
+    src: "/assets/images/avocado.png",
   },
   {
     id: 38,

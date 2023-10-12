@@ -60,8 +60,8 @@ Instructions:
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [{ role: "assistant", content: promptText }],
-        temperature: 0.2,
-        max_tokens: 300,
+        temperature: 0.4,
+        max_tokens: 400,
         // top_p: 1,
         // frequency_penalty: 0,
         // presence_penalty: 0,
