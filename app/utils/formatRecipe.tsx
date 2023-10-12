@@ -18,5 +18,5 @@ export const formatRecipe = (text: string) => {
   // Extract the instructions section
   const instructions = lines.slice(instructionsIndex + 1).join("\n");
 
-  return `${title}\n\n${ingredients}\n\n${instructions}`;
+  return `${title}\n\n${ingredients}\n${instructions}`;
 };

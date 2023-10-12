@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Ingredient } from "@/app/types";
 import { PotContext } from "@/app/contexts/PotContext";
 import { formatRecipe } from "../utils/formatRecipe";
+import cookingPot from "/public/assets/images/pot-animated.gif";
+import Image from "next/image";
 
 export default function ResultComponent() {
   const potContext = useContext(PotContext);
@@ -58,8 +60,8 @@ Instructions:
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [{ role: "assistant", content: promptText }],
-        temperature: 0.6,
-        max_tokens: 400,
+        temperature: 0.2,
+        max_tokens: 300,
         // top_p: 1,
         // frequency_penalty: 0,
         // presence_penalty: 0,
@@ -91,12 +93,23 @@ Instructions:
 
   return (
     <>
-      <div className="flex justify-center items-center p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 rounded-md mt-14">
-        {generatedRecipe ? (
-          <p>{generatedRecipe}</p>
-        ) : (
-          <p>Recipe is being generated. Thanks for your patience...</p>
-        )}
+      <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
+        <div className="p-4 border-4 bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md">
+          {generatedRecipe ? (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: generatedRecipe.replace(/\n/g, "<br />"),
+              }}
+            />
+          ) : (
+            <div className="flex flex-col gap-3 justify-center items-center">
+              <Image src={cookingPot} alt="Pot" width="250" height="250" />
+              <p className="text-xl">
+                Recipe is being generated. Thanks for your patience...
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
