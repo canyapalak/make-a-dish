@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Ingredient } from "@/app/types";
 import { PotContext } from "@/app/contexts/PotContext";
+import { formatRecipe } from "../utils/formatRecipe";
 
 export default function ResultComponent() {
   const potContext = useContext(PotContext);
@@ -59,11 +60,11 @@ Instructions:
         messages: [{ role: "assistant", content: promptText }],
         temperature: 0.6,
         max_tokens: 400,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-        stream: true,
-        n: 1,
+        // top_p: 1,
+        // frequency_penalty: 0,
+        // presence_penalty: 0,
+        // stream: true,
+        // n: 1,
       }),
     };
 
@@ -76,28 +77,27 @@ Instructions:
 
       const responseText = await response.text();
       console.log("API Response:", responseText);
-
       const responseData = JSON.parse(responseText);
-      return responseData.choices[0].text;
+      const formattedRecipe = formatRecipe(
+        responseData.choices[0].message.content
+      );
+      console.log("formattedRecipe :>> ", formattedRecipe);
+      return formattedRecipe;
     } catch (error) {
-      console.error("OpenAI API Error:", error);
+      console.error("JSON Parsing Error:", error);
       throw error;
     }
   };
 
   return (
-    <div>
-      {generatedRecipe ? (
-        <div>
-          <h2>Generated Recipe</h2>
+    <>
+      <div className="flex justify-center items-center p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 rounded-md mt-14">
+        {generatedRecipe ? (
           <p>{generatedRecipe}</p>
-        </div>
-      ) : (
-        <p>
-          No recipe generated yet. Add ingredients to your pot and wait for the
-          magic to happen!
-        </p>
-      )}
-    </div>
+        ) : (
+          <p>Recipe is being generated. Thanks for your patience...</p>
+        )}
+      </div>
+    </>
   );
 }
