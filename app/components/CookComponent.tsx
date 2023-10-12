@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { ingredients } from "@/public/assets/data/Ingredients";
 import Image from "next/image";
-import { Ingredient } from "@/app/types";
+import { CookComponentProps, Ingredient } from "@/app/types";
 import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
 import tick from "/public/assets/images/tick-icon.png";
 import { PotContext } from "@/app/contexts/PotContext";
 
-export default function CookComponent() {
+export default function CookComponent({ onResultClick }: CookComponentProps) {
   const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
     []
   );
@@ -39,6 +39,10 @@ export default function CookComponent() {
 
   const handleRemoveFromPot = (ingredient: Ingredient) => {
     removeFromPot(ingredient);
+  };
+
+  const handleCookingDone = () => {
+    onResultClick();
   };
 
   console.log("pot", pot);
@@ -97,6 +101,7 @@ export default function CookComponent() {
         onMouseEnter={() => setButtonState(button02)}
         onMouseLeave={() => setButtonState(button01)}
         className="relative flex items-center"
+        onClick={handleCookingDone}
       >
         <Image src={buttonState} alt="Logo" width="200" height="100" />
         <span

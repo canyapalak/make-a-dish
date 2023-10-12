@@ -9,6 +9,9 @@ export interface Ingredient {
 export type WelcomeComponentProps = {
   onStartClick: () => void;
 };
+export interface CookComponentProps {
+  onResultClick: () => void;
+}
 
 export interface PotProviderProps {
   children: ReactNode;
