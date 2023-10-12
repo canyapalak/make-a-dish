@@ -13,6 +13,8 @@ export default function Home() {
 
   const handleResultClick = () => {
     setShowResultComponent(true);
+    setShowCookComponent(false);
+    console.log("test");
   };
 
   return (

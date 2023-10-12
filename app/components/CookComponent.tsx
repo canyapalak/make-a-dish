@@ -41,10 +41,6 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
     removeFromPot(ingredient);
   };
 
-  const handleCookingDone = () => {
-    onResultClick();
-  };
-
   console.log("pot", pot);
 
   useEffect(() => {
@@ -101,7 +97,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
         onMouseEnter={() => setButtonState(button02)}
         onMouseLeave={() => setButtonState(button01)}
         className="relative flex items-center"
-        onClick={handleCookingDone}
+        onClick={onResultClick}
       >
         <Image src={buttonState} alt="Logo" width="200" height="100" />
         <span

@@ -1,10 +1,13 @@
 import { generateRecipe } from "@/app/utils/gpt3";
+import { useEffect } from "react";
 // import { useState } from "react";
 
 export default function ResultComponent() {
   //   const [recipe, setRecipe] = useState("");
 
-  generateRecipe();
+  useEffect(() => {
+    generateRecipe();
+  }, []);
 
   return (
     <div>

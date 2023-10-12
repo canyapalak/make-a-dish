@@ -9,9 +9,7 @@ async function generateRecipe() {
 
   const API_KEY = process.env.OPENAI_API_KEY;
 
-  const ingredientList = pot
-    .map((ingredient) => `${ingredient.name}, `)
-    .join("\n");
+  const ingredientList = pot.map((ingre) => `${ingre.name}, `).join("\n");
 
   const promptText = `You are an expert culinary chef. Create a meal recipe by strictly following these rules:
 
