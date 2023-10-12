@@ -18,7 +18,6 @@ export default function ResultComponent() {
 
   const generateRecipe = async (pot: Ingredient[]) => {
     const API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
-    console.log("API_KEY :>> ", API_KEY);
 
     const ingredientList = pot.map((ingre) => `· ${ingre.name}`).join("\n");
     console.log("ingredientList :>> ", ingredientList);
