@@ -6,8 +6,10 @@ import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
 import tick from "/public/assets/images/tick-icon.png";
 import { PotContext } from "@/app/contexts/PotContext";
+import WarningModal from "./WarningModal";
 
 export default function CookComponent({ onResultClick }: CookComponentProps) {
+  const [showWarning, setShowWarning] = useState(false);
   const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
     []
   );
@@ -42,15 +44,19 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
     removeFromPot(ingredient);
   };
 
-  const handleClearPot = () => {
-    clearPot();
-  };
-
   console.log("pot", pot);
 
   useEffect(() => {
     setShuffledIngredients(shuffleArray(ingredients));
   }, []);
+
+  const handleContinueClick = () => {
+    if (pot.length < 2 || pot.length > 8) {
+      setShowWarning(true);
+    } else {
+      onResultClick();
+    }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
@@ -102,7 +108,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
         onMouseEnter={() => setButtonState(button02)}
         onMouseLeave={() => setButtonState(button01)}
         className="relative flex items-center"
-        onClick={onResultClick}
+        onClick={handleContinueClick}
       >
         <Image src={buttonState} alt="Logo" width="200" height="100" />
         <span
@@ -112,6 +118,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
           LET'S GO!
         </span>
       </div>
+      {showWarning && <WarningModal onClose={() => setShowWarning(false)} />}
     </div>
   );
 }

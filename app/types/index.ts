@@ -26,3 +26,6 @@ export interface PotContextType {
   removeFromPot: (ingredient: Ingredient) => void;
   clearPot: () => void;
 }
+export interface WarningModalProps {
+  onClose: () => void;
+}

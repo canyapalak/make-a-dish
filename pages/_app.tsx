@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "@/app/globals.css";
+import "bootstrap/dist/css/bootstrap.css";
 import { Pixelify_Sans } from "next/font/google";
 import Head from "next/head";
 import Header from "@/app/components/Header";

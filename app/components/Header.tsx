@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className="mt-8 mx-auto text-center">
       <p className="text-6xl font-semibold text-center block">
-        <Link href="/">
+        <Link href="/" className="no-underline">
           <span className="text-red-500">MAKE·A·DISH</span>
         </Link>
       </p>
