@@ -18,8 +18,12 @@ export const PotProvider: React.FC<PotProviderProps> = ({ children }) => {
     setPot(updatedPot);
   };
 
+  const clearPot = () => {
+    setPot([]);
+  };
+
   return (
-    <PotContext.Provider value={{ pot, addToPot, removeFromPot }}>
+    <PotContext.Provider value={{ pot, addToPot, removeFromPot, clearPot }}>
       {children}
     </PotContext.Provider>
   );

@@ -12,6 +12,9 @@ export type WelcomeComponentProps = {
 export interface CookComponentProps {
   onResultClick: () => void;
 }
+export type ResultComponentProps = {
+  onStartClick: () => void;
+};
 
 export interface PotProviderProps {
   children: ReactNode;
@@ -21,4 +24,5 @@ export interface PotContextType {
   pot: Ingredient[];
   addToPot: (ingredient: Ingredient) => void;
   removeFromPot: (ingredient: Ingredient) => void;
+  clearPot: () => void;
 }

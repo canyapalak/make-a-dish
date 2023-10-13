@@ -1,11 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Ingredient } from "@/app/types";
+import { Ingredient, ResultComponentProps } from "@/app/types";
 import { PotContext } from "@/app/contexts/PotContext";
 import { formatRecipe } from "../utils/formatRecipe";
-import cookingPot from "/public/assets/images/pot-animated.gif";
+import waiting from "/public/assets/images/waiting.gif";
+import button01 from "/public/assets/images/button01.png";
+import button02 from "/public/assets/images/button02.png";
 import Image from "next/image";
 
-export default function ResultComponent() {
+export default function ResultComponent({
+  onStartClick,
+}: ResultComponentProps) {
+  const [buttonState, setButtonState] = useState(button01);
   const potContext = useContext(PotContext);
   const { pot } = potContext || { pot: [] };
 
@@ -60,7 +65,7 @@ Instructions:
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [{ role: "assistant", content: promptText }],
-        temperature: 0.4,
+        temperature: 0.3,
         max_tokens: 400,
         // top_p: 1,
         // frequency_penalty: 0,
@@ -94,18 +99,52 @@ Instructions:
   return (
     <>
       <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
-        <div className="p-4 border-4 bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md">
+        <div>
           {generatedRecipe ? (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: generatedRecipe.replace(/\n/g, "<br />"),
-              }}
-            />
+            <div className="flex flex-col gap-8">
+              <div className="p-4 border-4 bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: generatedRecipe.replace(/\n/g, "<br />"),
+                  }}
+                ></div>
+              </div>
+              <div
+                onMouseEnter={() => setButtonState(button02)}
+                onMouseLeave={() => setButtonState(button01)}
+                onClick={onStartClick}
+                className="relative flex flex-col items-center mx-auto"
+              >
+                <Image src={buttonState} alt="Logo" width="200" height="100" />
+                <span
+                  className="absolute inset-0 flex items-center justify-center text-3xl 
+          font-semibold cursor-pointer hover:text-stone-600"
+                >
+                  ONE MORE
+                </span>
+              </div>
+            </div>
           ) : (
-            <div className="flex flex-col gap-3 justify-center items-center">
-              <Image src={cookingPot} alt="Pot" width="250" height="250" />
-              <p className="text-xl">
-                Recipe is being generated. Thanks for your patience...
+            <div
+              className="flex flex-col gap-3 justify-center items-center p-4 border-4
+             bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md"
+            >
+              <div
+                className="relative mx-auto bg-gradient-to-b
+          from-slate-500 rounded-full w-60 h-60 overflow-hidden
+          shadow-xl mb-5 mt-6 border-zinc-600 border-2"
+              >
+                <Image
+                  src={waiting}
+                  alt="Pot"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <p className="text-xl text-center">
+                Recipe is being generated. This takes approx. 10-15 seconds.
+                <br />
+                Thanks for your patience...
               </p>
             </div>
           )}

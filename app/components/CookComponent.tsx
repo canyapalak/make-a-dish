@@ -17,10 +17,11 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
   }>({});
 
   const potContext = useContext(PotContext);
-  const { pot, addToPot, removeFromPot } = potContext || {
+  const { pot, addToPot, removeFromPot, clearPot } = potContext || {
     pot: [],
     addToPot: () => {},
     removeFromPot: () => {},
+    clearPot: () => {},
   };
 
   const handleIngredientClick = (ingredient: Ingredient) => {
@@ -39,6 +40,10 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
 
   const handleRemoveFromPot = (ingredient: Ingredient) => {
     removeFromPot(ingredient);
+  };
+
+  const handleClearPot = () => {
+    clearPot();
   };
 
   console.log("pot", pot);
