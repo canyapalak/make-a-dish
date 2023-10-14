@@ -6,10 +6,10 @@ import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
 import tick from "/public/assets/images/tick-icon.png";
 import { PotContext } from "@/app/contexts/PotContext";
-import WarningModal from "./WarningModal";
+// import WarningModal from "./WarningModal";
 
 export default function CookComponent({ onResultClick }: CookComponentProps) {
-  const [showWarning, setShowWarning] = useState(false);
+  // const [showWarning, setShowWarning] = useState(false);
   const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
     []
   );
@@ -51,11 +51,11 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
   }, []);
 
   const handleContinueClick = () => {
-    if (pot.length < 2 || pot.length > 8) {
-      setShowWarning(true);
-    } else {
-      onResultClick();
-    }
+    // if (pot.length < 2 || pot.length > 8) {
+    //   setShowWarning(true);
+    // } else {
+    onResultClick();
+    // }
   };
 
   return (
@@ -118,7 +118,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
           LET'S GO!
         </span>
       </div>
-      {showWarning && <WarningModal onClose={() => setShowWarning(false)} />}
+      {/* {showWarning && <WarningModal onClose={() => setShowWarning(false)} />} */}
     </div>
   );
 }

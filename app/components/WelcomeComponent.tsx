@@ -13,7 +13,7 @@ export default function WelcomeComponent({
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center mt-14 text-xl text-justify mx-2 md:mx-10 gap-16">
+      <div className="flex flex-col items-center mt-14 text-xl text-justify mx-2 md:mx-10 gap-16 min-h-screen">
         <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 rounded-md">
           <p>
             You got a fridge with edible enigmas but no clue what to cook? Then

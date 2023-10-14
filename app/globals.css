@@ -1,21 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https: //fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
 
 body {
     background-image: url("/assets/images/backgr.png");
     background-repeat:repeat;
     background-attachment: fixed;
-}
-
-#modal-box {
-    font-family: "Pixelify+Sans";
-    border-radius: 1rem;
-    border-color: black;
-    border-width: 1rem;
-}
-
-#modal-button {
-    background-color: yellowgreen;
 }

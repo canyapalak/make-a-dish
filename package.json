@@ -9,10 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bootstrap": "^5.3.2",
+    "lucide-react": "^0.287.0",
     "next": "13.5.4",
     "react": "^18",
-    "react-bootstrap": "^2.9.0",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18"
   },

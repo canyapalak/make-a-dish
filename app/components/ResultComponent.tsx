@@ -36,6 +36,7 @@ export default function ResultComponent({
 - The recipe must have a title at the beginning;
 - The recipe must have a list of ingredients with their measures;
 - The recipe must have a list of instructions;
+- The recipe must include all of the available ingredients;
 - Ingredients available:
 ${ingredientList}
 
