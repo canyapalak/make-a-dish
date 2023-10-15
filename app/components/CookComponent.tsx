@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { ingredients } from "@/public/assets/data/Ingredients";
 import Image from "next/image";
+import { ingredients } from "@/public/assets/data/Ingredients";
 import { CookComponentProps, Ingredient } from "@/app/types";
 import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
