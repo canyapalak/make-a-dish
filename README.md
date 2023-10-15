@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Make a Dish
 
-## Getting Started
+<h2>A recipe generator app using Next.js, TypeScript, Tailwind, and OpenAI API</h2>
 
-First, run the development server:
+<h2>Functionality and purpose of the application</h2>
+<p>
+Make a Dish is your go-to app for creating delicious dishes with the ingredients you have on hand. Here's what the app offers:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Ingredient Selection:** Users can easily pick the ingredients they have in their fridge or pantry.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Recipe Generation:** With the power of the OpenAI API, the app generates creative and customized recipes based on the selected ingredients.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Unique Design:** Make a Dish features a delightful and unique pixel art graphic style that adds a touch of charm to your cooking experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Responsive Design:** The app is fully responsive, ensuring a seamless experience on all devices, from desktops to mobile phones.
 
-## Learn More
+</p>
+  
+<h2>Technologies used</h2>
+<p>
+Next.js
+<br>
+Typescript
+<br>
+Tailwind CSS
+<br>
+OpenAI API
+<br>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Deployed on Vercel:</h2>
+https://make-a-dish.vercel.app/
