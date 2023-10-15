@@ -28,7 +28,6 @@ export default function ResultComponent({
     const API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
     const ingredientList = pot.map((ingre) => `· ${ingre.name}`).join("\n");
-    console.log("ingredientList :>> ", ingredientList);
 
     const promptText = `You are an expert culinary chef. Create a meal recipe by strictly following these rules:
 
@@ -52,8 +51,6 @@ Ingredients:
 Instructions:
 1. Put pasta in boiling water
 2. Fry mince and mushroom`;
-
-    console.log("promptText :>> ", promptText);
 
     const apiUrl = "https://api.openai.com/v1/chat/completions";
 
@@ -79,15 +76,12 @@ Instructions:
       }
 
       const responseText = await response.text();
-      console.log("API Response:", responseText);
       const responseData = JSON.parse(responseText);
       const formattedRecipe = formatRecipe(
         responseData.choices[0].message.content
       );
-      console.log("formattedRecipe :>> ", formattedRecipe);
       return formattedRecipe;
     } catch (error) {
-      console.error("JSON Parsing Error:", error);
       throw error;
     }
   };

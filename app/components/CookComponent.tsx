@@ -44,8 +44,6 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
     removeFromPot(ingredient);
   };
 
-  console.log("pot", pot);
-
   useEffect(() => {
     setShuffledIngredients(shuffleArray(ingredients));
   }, []);
