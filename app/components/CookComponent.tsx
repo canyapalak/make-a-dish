@@ -6,10 +6,10 @@ import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
 import tick from "/public/assets/images/tick-icon.png";
 import { PotContext } from "@/app/contexts/PotContext";
-// import WarningModal from "./WarningModal";
+import BasicModal from "./Modal";
 
 export default function CookComponent({ onResultClick }: CookComponentProps) {
-  // const [showWarning, setShowWarning] = useState(false);
+  const [open, setOpen] = useState(false);
   const [shuffledIngredients, setShuffledIngredients] = useState<Ingredient[]>(
     []
   );
@@ -19,7 +19,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
   }>({});
 
   const potContext = useContext(PotContext);
-  const { pot, addToPot, removeFromPot, clearPot } = potContext || {
+  const { pot, addToPot, removeFromPot } = potContext || {
     pot: [],
     addToPot: () => {},
     removeFromPot: () => {},
@@ -51,15 +51,16 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
   }, []);
 
   const handleContinueClick = () => {
-    // if (pot.length < 2 || pot.length > 8) {
-    //   setShowWarning(true);
-    // } else {
-    onResultClick();
-    // }
+    if (pot.length < 2 || pot.length > 8) {
+      setOpen(true);
+    } else {
+      onResultClick();
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
+    <main className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
+      {open ? <BasicModal open={open} setOpen={setOpen} /> : null}
       <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 text-xl rounded-md">
         <p>Pick the ingredients in your fridge and let the magic happen!</p>
       </div>
@@ -118,8 +119,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
           LET'S GO!
         </span>
       </div>
-      {/* {showWarning && <WarningModal onClose={() => setShowWarning(false)} />} */}
-    </div>
+    </main>
   );
 }
 

@@ -4,14 +4,15 @@ import { Home, Github, Send, Linkedin } from "lucide-react";
 export default function Footer() {
   return (
     <div
-      className="px-12 flex flex-col gap-4 align-middle items-center 
-      mb-0 top-auto w-screen
+      className="px-4 flex flex-col gap-4 align-middle items-center mb-0 top-auto w-screen
         py-4 sticky p-3 border-t-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 mt-16 text-center"
     >
-      <div className="inline-block">
-        <span className="text-red-500">Make a Dish</span>
-        <span> by Can Yapalak</span>
-        <p className="mt-1">
+      <div className="flex flex-col md:flex-row">
+        <div className="inline-block">
+          <span className="text-red-500 mr-1">Make a Dish</span>
+          <span className="mr-1"> by Can Yapalak.</span>
+        </div>
+        <p>
           This app uses{" "}
           <a
             href="https://openai.com/blog/openai-api"
