@@ -5,6 +5,7 @@ import { formatRecipe } from "../utils/formatRecipe";
 import waiting from "/public/assets/images/waiting.gif";
 import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
+import { Copy, CopyCheck } from "lucide-react";
 import Image from "next/image";
 
 export default function ResultComponent({
@@ -13,6 +14,8 @@ export default function ResultComponent({
   const [buttonState, setButtonState] = useState(button01);
   const potContext = useContext(PotContext);
   const { pot } = potContext || { pot: [] };
+  const [isCopied, setIsCopied] = useState(false);
+  const [showCopiedText, setShowCopiedText] = useState(false);
 
   const [generatedRecipe, setGeneratedRecipe] = useState<string | null>(null);
 
@@ -86,14 +89,40 @@ Instructions:
     }
   };
 
+  const handleCopyLink = () => {
+    if (generatedRecipe !== null) {
+      navigator.clipboard.writeText(generatedRecipe);
+      setIsCopied(true);
+      setShowCopiedText(true);
+    }
+
+    setTimeout(() => {
+      setShowCopiedText(false);
+    }, 1000);
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center items-center mt-14 text-justify mx-2 md:mx-10 gap-10">
         <div>
           {generatedRecipe ? (
             <div className="flex flex-col gap-8">
-              <div className="p-4 border-4 bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md">
+              <div className="p-4 border-4 bg-white border-slate-700 shadow-lg text-lg shadow-zinc-600 rounded-md relative">
+                {isCopied ? (
+                  <div className="flex flex-row gap-2 absolute top-2 right-2">
+                    {showCopiedText ? (
+                      <p className="text-green-600"> Copied!</p>
+                    ) : null}
+                    <CopyCheck className="w-7 h-7" />
+                  </div>
+                ) : (
+                  <Copy
+                    onClick={handleCopyLink}
+                    className="absolute top-2 right-2 cursor-pointer w-7 h-7 hover:text-red-500"
+                  />
+                )}
                 <div
+                  className="p-7"
                   dangerouslySetInnerHTML={{
                     __html: generatedRecipe.replace(/\n/g, "<br />"),
                   }}

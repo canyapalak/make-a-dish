@@ -62,7 +62,7 @@ export default function CookComponent({ onResultClick }: CookComponentProps) {
       <div className="p-3 border-4 bg-white border-slate-700 shadow-lg shadow-zinc-600 text-xl rounded-md">
         <p>Pick the ingredients in your fridge and let the magic happen!</p>
       </div>
-      <div className="flex flex-row flex-wrap gap-4 md:gap-6 mx-4 lg:mx-8 justify-center ">
+      <div className="flex flex-row flex-wrap gap-3 md:gap-6 mx-4 lg:mx-8 justify-center ">
         {shuffledIngredients.map((ingre) => (
           <div
             key={ingre.name}
