@@ -26,6 +26,8 @@ Typescript
 <br>
 Tailwind CSS
 <br>
+Material UI
+<br>
 OpenAI API
 <br>
 
