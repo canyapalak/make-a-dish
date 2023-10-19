@@ -8,7 +8,7 @@ Make a Dish is your go-to app for creating delicious dishes with the ingredients
 
 - **Ingredient Selection:** Users can easily pick the ingredients they have in their fridge or pantry.
 
-- **Extra Instructions:** The user can select a checkbox if they are vegan and also chooses how many time they have in order to cook the recipe.
+- **Extra Instructions:** Users can select whether they are vegan or not and also choose how much time they have in order to cook the recipe.
 
 - **Recipe Generation:** With the power of the OpenAI API, the app generates creative and customized recipes based on the selected ingredients.
 
