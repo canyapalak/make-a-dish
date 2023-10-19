@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
 import { Ingredient, PotContextType, PotProviderProps } from "../types";
-import { ingredients } from "@/public/assets/data/Ingredients";
 
 export const PotContext = createContext<PotContextType | undefined>(undefined);
 

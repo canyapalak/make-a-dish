@@ -20,12 +20,25 @@ export interface PotProviderProps {
   children: ReactNode;
 }
 
+export interface InstructionProviderProps {
+  children: ReactNode;
+}
+
 export interface PotContextType {
   pot: Ingredient[];
   addToPot: (ingredient: Ingredient) => void;
   removeFromPot: (ingredient: Ingredient) => void;
   clearPot: () => void;
 }
+
+export interface InstructionContextType {
+  selectVegan: (isVegan: boolean) => void;
+  isVegan: boolean;
+  selectedDuration: string;
+  setSelectedDuration: (duration: string) => void;
+  handleDurationChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
 export interface ModalInterface {
   open: boolean;
   setOpen: (bool: boolean) => void;

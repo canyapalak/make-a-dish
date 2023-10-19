@@ -4,6 +4,7 @@ import { Pixelify_Sans } from "next/font/google";
 import Head from "next/head";
 import Header from "@/app/components/Header";
 import { PotProvider } from "@/app/contexts/PotContext";
+import { InstructionProvider } from "@/app/contexts/InstructionContext";
 import Footer from "@/app/components/Footer";
 import { createTheme, ThemeProvider } from "@mui/material";
 
@@ -30,13 +31,15 @@ export default function MyApp({ Component, pageProps }: any) {
       </Head>
       <main className={`flex flex-col min-h-screen ${pixelify.className}`}>
         <PotProvider>
-          <Header />
-          <div className="flex-grow mx-4" id="app-bg">
-            <ThemeProvider theme={theme}>
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </div>
-          <Footer />
+          <InstructionProvider>
+            <Header />
+            <div className="flex-grow mx-4" id="app-bg">
+              <ThemeProvider theme={theme}>
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </div>
+            <Footer />
+          </InstructionProvider>
         </PotProvider>
       </main>
     </>

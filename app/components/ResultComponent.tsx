@@ -7,15 +7,26 @@ import button01 from "/public/assets/images/button01.png";
 import button02 from "/public/assets/images/button02.png";
 import { Copy, CopyCheck } from "lucide-react";
 import Image from "next/image";
+import { InstructionContext } from "../contexts/InstructionContext";
 
 export default function ResultComponent({
   onStartClick,
 }: ResultComponentProps) {
   const [buttonState, setButtonState] = useState(button01);
+  const instructionContext = useContext(InstructionContext);
   const potContext = useContext(PotContext);
   const { pot } = potContext || { pot: [] };
   const [isCopied, setIsCopied] = useState(false);
   const [showCopiedText, setShowCopiedText] = useState(false);
+
+  let isVegan = false;
+  let duration = "20-40";
+  if (instructionContext) {
+    isVegan = instructionContext.isVegan;
+    if (instructionContext.selectedDuration) {
+      duration = instructionContext.selectedDuration;
+    }
+  }
 
   const [generatedRecipe, setGeneratedRecipe] = useState<string | null>(null);
 
@@ -32,6 +43,10 @@ export default function ResultComponent({
 
     const ingredientList = pot.map((ingre) => `· ${ingre.name}`).join("\n");
 
+    const veganPrompt = isVegan
+      ? `- The recipe must include only vegan ingredients;\n`
+      : "";
+
     const promptText = `You are an expert culinary chef. Create a meal recipe by strictly following these rules:
 
   Rules:
@@ -39,6 +54,8 @@ export default function ResultComponent({
 - The recipe must have a list of ingredients with their measures;
 - The recipe must have a list of instructions;
 - The recipe must include all of the available ingredients;
+- The recipe can be made in ${duration} minutes;
+${veganPrompt}
 - Ingredients available:
 ${ingredientList}
 
