@@ -8,7 +8,9 @@ Make a Dish is your go-to app for creating delicious dishes with the ingredients
 
 - **Ingredient Selection:** Users can easily pick the ingredients they have in their fridge or pantry.
 
-- **Recipe Generation:** With the power of the OpenAI API, the app generates creative and customized recipes based on the selected ingredients.
+- **Extra Instructions:** Users can select whether they are vegan or not and also choose how much time they have in order to cook the recipe.
+
+- **Recipe Generation:** With the power of the OpenAI API, the app generates creative and customized recipes based on the selected ingredients and instructions.
 
 - **Unique Design:** Make a Dish features a delightful and unique pixel art graphic style that adds a touch of charm to your cooking experience.
 
@@ -23,6 +25,8 @@ Next.js
 Typescript
 <br>
 Tailwind CSS
+<br>
+Material UI
 <br>
 OpenAI API
 <br>
