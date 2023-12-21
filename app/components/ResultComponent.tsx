@@ -178,7 +178,7 @@ Instructions:
                 />
               </div>
               <p className="text-xl text-center">
-                Recipe is being generated. This takes approx. 10-15 seconds.
+                Recipe is being generated. This can take a few seconds.
                 <br />
                 Thanks for your patience...
               </p>
