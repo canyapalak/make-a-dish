@@ -3,8 +3,8 @@ import "@/app/globals.css";
 import { Pixelify_Sans } from "next/font/google";
 import Head from "next/head";
 import Header from "@/app/components/Header";
-import { PotProvider } from "@/app/contexts/PotContext";
 import { InstructionProvider } from "@/app/contexts/InstructionContext";
+import { PotProvider } from "@/app/contexts/PotContext";
 import Footer from "@/app/components/Footer";
 import { createTheme, ThemeProvider } from "@mui/material";
 
