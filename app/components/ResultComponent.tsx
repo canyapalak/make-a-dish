@@ -36,6 +36,7 @@ export default function ResultComponent({
         setGeneratedRecipe(recipe);
       });
     }
+    console.log("generatedRecipe", generatedRecipe);
   }, [pot]);
 
   const generateRecipe = async (pot: Ingredient[]) => {

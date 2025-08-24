@@ -4,6 +4,8 @@ export const formatRecipe = (text: string) => {
   const ingredientsIndex = lines.indexOf("Ingredients:");
   const instructionsIndex = lines.indexOf("Instructions:");
 
+  console.log("title :>> ", title);
+
   const ingredients = lines
     .slice(ingredientsIndex + 1, instructionsIndex)
     .join("\n");
